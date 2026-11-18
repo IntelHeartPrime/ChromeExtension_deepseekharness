@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "DSH 一键直达",
+  "version": "1.0.0",
+  "minimum_chrome_version": "121",
+  "description": "一键打开 DeepSeek Harness，并在 Chrome 标签栏自动标记 DSH 标签。",
+  "permissions": ["tabGroups", "storage"],
+  "host_permissions": ["http://127.0.0.1/*"],
+  "action": {
+    "default_title": "打开或切回 DSH",
+    "default_icon": {
+      "16": "icons/dsh-16.png",
+      "32": "icons/dsh-32.png"
+    }
+  },
+  "icons": {
+    "16": "icons/dsh-16.png",
+    "32": "icons/dsh-32.png",
+    "48": "icons/dsh-48.png",
+    "128": "icons/dsh-128.png"
+  },
+  "background": {"service_worker": "background.js"}
+}
