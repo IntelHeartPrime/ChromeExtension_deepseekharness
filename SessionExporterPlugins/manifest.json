@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Session Exporter 一键直达",
+  "version": "1.0.0",
+  "minimum_chrome_version": "121",
+  "description": "一键打开或切回本机 Session Exporter，并在 Chrome 标签栏自动使用黄色分组独立标记。",
+  "permissions": ["tabGroups", "storage"],
+  "host_permissions": ["http://127.0.0.1/*"],
+  "action": {
+    "default_title": "打开或切回 Session Exporter",
+    "default_icon": {
+      "16": "icons/session-exporter-16.png",
+      "32": "icons/session-exporter-32.png"
+    }
+  },
+  "icons": {
+    "16": "icons/session-exporter-16.png",
+    "32": "icons/session-exporter-32.png",
+    "48": "icons/session-exporter-48.png",
+    "128": "icons/session-exporter-128.png"
+  },
+  "background": {"service_worker": "background.js"}
+}

@@ -1,16 +1,35 @@
-# DSH 一键直达
+# 本机服务 Chrome 一键直达插件
 
-点击 Chrome 工具栏的 DSH 图标，切回已有的 DeepSeek Harness 会话，或者打开本机的 DSH 首页。普通窗口里的 DSH 标签会自动归入紫色 **DSH** 分组。Chrome 原生的垂直和横向标签栏都可以显示这个分组。
+两个独立的 Chrome Manifest V3 扩展，为本机服务提供工具栏一键跳转和标签分组标记。
+
+| 插件目录 | 服务地址 | 标签分组 | 图标 |
+| --- | --- | --- | --- |
+| [DeepSeekHarnessPlugins](DeepSeekHarnessPlugins/) | `http://127.0.0.1:3080/` | 紫色 DSH | DSH 图标 |
+| [SessionExporterPlugins](SessionExporterPlugins/) | `http://127.0.0.1:8765/` | 黄色 Session Exporter | 金色文档导出图标 |
+
+点击对应图标时，优先切回当前窗口的已有标签，再查找其他普通窗口；没有打开时才新建标签。手动打开服务页面也会自动分组，两个服务按端口分别识别。
 
 ## 安装
 
-1. 在 Chrome 打开 `chrome://extensions`，启用右上角的 **开发者模式**。
-2. 点击 **加载已解压的扩展程序**，选择包含 `manifest.json` 的本项目文件夹。
-3. 打开工具栏的扩展程序菜单，固定 **DSH 一键直达**。
+1. 下载并解压本仓库，或使用 Git 克隆到本机。
+2. 打开 `chrome://extensions`，开启 **开发者模式**。
+3. 点击 **加载已解压的扩展程序**，选择需要的插件子目录（包含 `manifest.json`），不要选择仓库根目录。
+4. 如需两个插件，分别加载两个子目录，并在工具栏扩展程序菜单中固定它们。
 
-## 使用
+使用前请启动对应本机服务。详细说明见各插件目录的 README。
 
-- 插件连接 `http://127.0.0.1:3080/`。如果 Chrome 显示连接错误，在终端启动 `dsh web` 后刷新。
-- 首次使用或 DSH 会话过期时，在同一个 Chrome 用户配置中打开 `dsh web` 输出的认证地址。插件使用 DSH 设置的浏览器会话，扩展存储只记录分组与标签 ID。
-- 左侧标签栏过窄时，可悬停在分组标记上查看组名。点击工具栏图标可展开 DSH 分组并返回会话。
-- 固定的 DSH 标签仍可一键切回。Chrome 会保留它们的固定位置。
+原先位于仓库根目录的 DSH 扩展已移至 `DeepSeekHarnessPlugins/`。此前从根目录加载的用户，请在 Chrome 中重新加载该子目录。
+
+## Session Exporter 图标
+
+![Session Exporter 金色图标](SessionExporterPlugins/icons/session-exporter-128.png)
+
+提供 16、32、48、128 像素 PNG、SVG 源文件，以及 macOS 图标生成脚本。
+
+## 验证
+
+无需安装依赖，使用 Node.js 运行：
+
+```sh
+node --test SessionExporterPlugins/tests/background.test.cjs
+```
